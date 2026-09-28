@@ -1,0 +1,6 @@
+# Never commit workbook data or backups here — doing so could publish
+# Ownershift's confidential quarterly plans.
+*backup*.txt
+*backup*.json
+*.csv
+_preview_scratch.html
