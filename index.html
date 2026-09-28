@@ -47,6 +47,9 @@ html,body{height:100%;background:var(--bg);color:var(--tx);font-family:var(--fon
 .sb-top{padding:16px 14px 12px;border-bottom:1px solid var(--sb-border);flex-shrink:0}
 .sb-logo-text{font-size:15px;font-weight:500;color:#FFFFFF;letter-spacing:.01em;margin-bottom:4px;}
 .sb-q{font-size:11px;color:var(--sb-tx2)}
+.sb-qsel{font-size:11px;font-weight:500;color:var(--sb-tx);background:var(--sb-active-bg);border:1px solid var(--sb-border);border-radius:6px;padding:4px 8px;font-family:var(--font);cursor:pointer;max-width:150px}
+.sb-qsel:hover{border-color:var(--sb-active-tx)}
+.sb-qsel:focus{outline:none;border-color:var(--sb-active-tx)}
 .sb-nav{flex:1;overflow-y:auto;padding:8px 0}
 .nav-sec{font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--sb-tx2);padding:14px 14px 4px;opacity:.7}
 .nav-item{display:flex;align-items:center;gap:8px;padding:7px 14px;cursor:pointer;color:var(--sb-tx);font-size:13px;user-select:none;border-radius:0}
@@ -255,7 +258,7 @@ textarea.fc{resize:vertical;min-height:54px}
       <div style="margin-bottom:6px;padding:4px 0;">
         <img src="data:image/png;base64,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" alt="Ownershift" style="height:26px;display:block;">
       </div>
-      <div class="sb-q" id="sb-quarter">Q3 2026</div>
+      <select class="sb-qsel" id="sb-quarter" onchange="onQuarterSelect(this.value)" aria-label="Quarter"></select>
     </div>
     <button class="sidebar-close" onclick="toggleSidebar()" aria-label="Close menu">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
@@ -303,6 +306,7 @@ textarea.fc{resize:vertical;min-height:54px}
       <button class="btn btn-ghost" onclick="addNSRow()">+ Add metric</button>
     </div>
   </div></div>
+  <div id="load-banner" style="display:none"></div>
   <div class="content">
 
     <div id="panel-northstar" class="panel">
@@ -398,6 +402,23 @@ textarea.fc{resize:vertical;min-height:54px}
   </div>
 </div>
 
+<div class="modal-bg" id="quarter-modal">
+  <div class="modal">
+    <h3>New quarter</h3>
+    <div style="font-size:12px;color:var(--tx2);line-height:1.55;margin:-4px 0 14px">
+      Starts with no rocks. Your North Star metrics carry over (weekly values reset to blank).
+      Existing quarters are untouched.
+    </div>
+    <div class="fg"><label class="fl">Quarter name</label><input class="fc" id="q-name" placeholder="e.g. Q4 2026"></div>
+    <div class="fg"><label class="fl">Quarter start date (week 1)</label><input class="fc" type="date" id="q-start"></div>
+    <div id="q-err" style="font-size:11px;color:var(--red);margin-top:8px"></div>
+    <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:16px">
+      <button class="btn btn-ghost" onclick="closeQuarterModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="createQuarter()">Create quarter</button>
+    </div>
+  </div>
+</div>
+
 <script>
 function toggleSidebar(){
   var sb = document.querySelector('.sidebar');
@@ -456,7 +477,16 @@ var DIMS = ['Revenue & Growth','Customer Success','Product & Innovation','Team &
 var DEPARTMENTS = ['All Departments','Marketing','Sales','Technology','Fin & Ops','Office of CEO'];
 var STATUSES = ['Not Started','On Track','At Risk','Done'];
 var MS_OPTS = ['--','Planned','Done','At Risk'];
-var WEEK_DATES = ['03.16','03.23','03.30','04.06','04.13','04.20','04.27','05.04','05.11','05.18','05.25','06.01','06.08','06.15','06.22','06.29','07.06','07.13','07.20','07.27','08.03','08.10','08.17','08.24','08.31','09.07','09.14','09.21','09.28'];
+// The original single-quarter workbook was built on this fixed 29-week calendar.
+// It is kept verbatim and reused for the migrated quarter so that every existing
+// milestone / KPI column stays aligned with the week it was recorded against.
+var LEGACY_WEEK_DATES = ['03.16','03.23','03.30','04.06','04.13','04.20','04.27','05.04','05.11','05.18','05.25','06.01','06.08','06.15','06.22','06.29','07.06','07.13','07.20','07.27','08.03','08.10','08.17','08.24','08.31','09.07','09.14','09.21','09.28'];
+var LEGACY_QUARTER_START = '2026-03-16'; // week 1 of the legacy calendar
+var WEEKS_PER_QUARTER = 13;              // new quarters get a standard 13 weeks
+
+// Points at the ACTIVE quarter's own calendar. Reassigned by bindQuarter(), which
+// is why every reader below can keep using WEEK_DATES unchanged.
+var WEEK_DATES = LEGACY_WEEK_DATES.slice();
 var PAGE_META = {
   northstar:  {title:'North Star Metrics',        sub:'Leading and lagging indicators — tracked weekly'},
   allrocks:   {title:'All Rocks',                 sub:'Every rock across the company'},
@@ -471,17 +501,34 @@ var PAGE_META = {
   support:    {title:'Support Needed',            sub:'What does the team need from leadership?'}
 };
 
+var DEFAULT_NS = [
+  {type:'LEADING', metric:'[e.g. Qualified leads / week]', owner:'[Owner]', target:'', weeks:['','','','','','','','','','','',''], status:'On Track'},
+  {type:'LAGGING', metric:'[e.g. New revenue closed ($)]', owner:'[Owner]', target:'', weeks:['','','','','','','','','','','',''], status:'On Track'},
+  {type:'LAGGING', metric:'[e.g. Customer NPS]',           owner:'[Owner]', target:'', weeks:['','','','','','','','','','','',''], status:'On Track'}
+];
+
+// Each quarter owns its own rocks, North Star metrics, logs and week calendar.
+// D.ns / D.rocks / D.better / D.blockers / D.support below are NOT separate data —
+// bindQuarter() points them at the active quarter's arrays, so the rest of the app
+// reads and writes the active quarter without knowing quarters exist. They are
+// stripped before saving (see serializeD) so the stored file holds one copy only.
 var D = {
+  activeQuarter: '',
+  quarters: {},
+
+  // ── mirrors of the active quarter (never saved directly) ──
   quarter: '',
-  ns: [
-    {type:'LEADING', metric:'[e.g. Qualified leads / week]', owner:'[Owner]', target:'', weeks:['','','','','','','','','','','',''], status:'On Track'},
-    {type:'LAGGING', metric:'[e.g. New revenue closed ($)]', owner:'[Owner]', target:'', weeks:['','','','','','','','','','','',''], status:'On Track'},
-    {type:'LAGGING', metric:'[e.g. Customer NPS]',           owner:'[Owner]', target:'', weeks:['','','','','','','','','','','',''], status:'On Track'}
-  ],
-  rocks:[],
+  ns: [],
+  rocks: [],
   better:[], blockers:[], support:[],
+
+  // ── shared across every quarter ──
   expanded:{}, srTab:{}, indCollapsed:{}, indRockCollapsed:{}, activeFilter:{}, portcoCollapsed:{}, portcoRockCollapsed:{}
 };
+
+// Keys that mirror the active quarter — excluded when writing, so quarter data
+// is never stored twice (and can never drift between the two copies).
+var MIRROR_KEYS = ['quarter','ns','rocks','better','blockers','support'];
 
 var STORE = 'own_rocks_v1';
 var DATA_VERSION = 4;
@@ -716,37 +763,40 @@ function authInit() {
 
 function applyData(s) {
   if (!s) return;
-  if (s.quarter)       D.quarter       = s.quarter;
-  if (s.ns)            D.ns            = s.ns;
-  // Unified rocks — migrate from old brand arrays if needed
-  if (s.rocks) {
-    D.rocks = s.rocks;
-    // Pad milestones/KPI weeks to match WEEK_DATES length
-    D.rocks.forEach(function(r){
-      if(r.subrocks) r.subrocks.forEach(function(sub){
-        if(!sub.milestones) sub.milestones=[];
-        while(sub.milestones.length < WEEK_DATES.length) sub.milestones.push('');
-        if(!sub.msNotes) sub.msNotes=[];
-        while(sub.msNotes.length < WEEK_DATES.length) sub.msNotes.push('');
-        if(!sub.kpis) sub.kpis=[];
-        sub.kpis.forEach(function(kpi){
-          if(!kpi.weeks) kpi.weeks=[];
-          while(kpi.weeks.length < WEEK_DATES.length) kpi.weeks.push('');
-        });
-      });
-    });
+
+  if (s.quarters && Object.keys(s.quarters).length) {
+    // ── Already a multi-quarter workbook ──
+    D.quarters = s.quarters;
+    D.activeQuarter = (s.activeQuarter && s.quarters[s.activeQuarter])
+      ? s.activeQuarter
+      : quarterNames()[quarterNames().length - 1];
   } else {
-    // Migrate from old per-brand arrays
-    var migrated = [];
-    if (s.ckRocks)      migrated = migrated.concat(s.ckRocks);
-    if (s.nuzzieRocks)  migrated = migrated.concat(s.nuzzieRocks);
-    if (s.jabalooRocks) migrated = migrated.concat(s.jabalooRocks);
-    if (s.cedarRocks)   migrated = migrated.concat(s.cedarRocks);
-    if (migrated.length) D.rocks = migrated;
+    // ── Single-quarter workbook: wrap it as one quarter, losing nothing ──
+    // Its calendar is pinned to the legacy 29 weeks so every milestone already
+    // recorded stays on the week it was recorded against.
+    var rocks = s.rocks;
+    if (!rocks) {
+      var migrated = [];
+      if (s.ckRocks)      migrated = migrated.concat(s.ckRocks);
+      if (s.nuzzieRocks)  migrated = migrated.concat(s.nuzzieRocks);
+      if (s.jabalooRocks) migrated = migrated.concat(s.jabalooRocks);
+      if (s.cedarRocks)   migrated = migrated.concat(s.cedarRocks);
+      rocks = migrated;
+    }
+    var name = (s.quarter && String(s.quarter).trim()) || 'Q3 2026';
+    D.quarters = {};
+    D.quarters[name] = {
+      startDate: LEGACY_QUARTER_START,
+      weekDates: LEGACY_WEEK_DATES.slice(),
+      ns:        s.ns       || DEFAULT_NS.map(function(m){ return JSON.parse(JSON.stringify(m)); }),
+      rocks:     rocks      || [],
+      better:    s.better   || [],
+      blockers:  s.blockers || [],
+      support:   s.support  || []
+    };
+    D.activeQuarter = name;
   }
-  if (s.better)        D.better        = s.better;
-  if (s.blockers)      D.blockers      = s.blockers;
-  if (s.support)       D.support       = s.support;
+
   if (s.expanded)      D.expanded      = s.expanded;
   if (s.srTab)         D.srTab         = s.srTab;
   if (s.indCollapsed)  D.indCollapsed  = s.indCollapsed;
@@ -754,7 +804,20 @@ function applyData(s) {
   if (s.portcoCollapsed)     D.portcoCollapsed     = s.portcoCollapsed;
   if (s.portcoRockCollapsed) D.portcoRockCollapsed = s.portcoRockCollapsed;
   if (s.activeFilter) D.activeFilter = s.activeFilter;
+  bindQuarter(); // point the app at the active quarter
 }
+
+// The object actually written to storage: everything except the mirror keys,
+// so each quarter's data is stored exactly once.
+function serializeD() {
+  var out = {};
+  Object.keys(D).forEach(function(k){
+    if (MIRROR_KEYS.indexOf(k) === -1) out[k] = D[k];
+  });
+  out._v = DATA_VERSION;
+  return out;
+}
+
 
 function sbHeaders() {
   return {
@@ -768,7 +831,7 @@ function sbHeaders() {
 // Debounced save — waits 800ms after last change before writing to Supabase
 function save() {
   // Always write to localStorage as fallback
-  try { D._v=DATA_VERSION; localStorage.setItem(STORE, JSON.stringify(D)); } catch(e) {}
+  try { D._v=DATA_VERSION; localStorage.setItem(STORE, JSON.stringify(serializeD())); } catch(e) {}
   // Debounce Supabase write
   if (_saveTimer) clearTimeout(_saveTimer);
   _saveTimer = setTimeout(function() { saveToSupabase(); }, 800);
@@ -779,8 +842,14 @@ function saveToSupabase() {
     console.warn('saveToSupabase: no auth session, skipping');
     return;
   }
+  // Never overwrite the shared workbook with a copy we failed to read first.
+  if (!_loadOk) {
+    console.warn('saveToSupabase: blocked — the workbook was never loaded successfully in this session.');
+    setSyncStatus('blocked');
+    return;
+  }
   D._v = DATA_VERSION;
-  var payload = { id: SB_ID, data: D, updated_at: new Date().toISOString() };
+  var payload = { id: SB_ID, data: serializeD(), updated_at: new Date().toISOString() };
   fetch(SB_URL + '/rest/v1/' + SB_TABLE, {
     method: 'POST',
     headers: sbHeaders(),
@@ -810,7 +879,34 @@ function setSyncStatus(state) {
   } else if (state === 'error') {
     el.textContent = '⚠ Sync error';
     el.style.color = 'var(--amber)';
+  } else if (state === 'blocked') {
+    el.textContent = '⚠ Not saving';
+    el.style.color = 'var(--red)';
+  } else {
+    el.textContent = '';   // clears the indicator (previously it stuck on "Loading…")
   }
+}
+
+// ── Load state guard ───────────────────────────────────────────────────────
+// The workbook is one row shared by everyone. If this browser never managed to
+// READ that row, its in-memory copy is empty — and saving would replace the real
+// workbook with nothing. So saving stays switched off until a load has succeeded.
+var _loadOk = false;
+
+function blockSaving(title, detail) {
+  _loadOk = false;
+  setSyncStatus('blocked');
+  var b = document.getElementById('load-banner');
+  if (!b) return;
+  b.style.display = '';
+  b.style.cssText = 'display:block;margin:0 0 16px;padding:12px 16px;border:1px solid var(--red);border-left:4px solid var(--red);border-radius:var(--r);background:var(--red-bg);color:var(--red-tx);font-size:12.5px;line-height:1.6';
+  b.innerHTML = '<strong>'+esc(title)+'</strong><br>'+esc(detail)+
+    '<br><br><strong>Your changes are not being saved.</strong> Nothing you type here will be kept, and the workbook has not been altered. Please contact whoever administers this site rather than re-entering the rocks.';
+}
+
+function clearLoadBanner() {
+  var b = document.getElementById('load-banner');
+  if (b) { b.style.display = 'none'; b.innerHTML = ''; }
 }
 
 function load() {
@@ -840,15 +936,26 @@ function load() {
     console.log('Supabase load response:', JSON.stringify(rows).substring(0, 200));
     if (rows && rows.length > 0 && rows[0].data) {
       applyData(rows[0].data);
-      try { D._v=DATA_VERSION; localStorage.setItem(STORE, JSON.stringify(D)); } catch(e) {}
+      _loadOk = true;
+      clearLoadBanner();
+      setSyncStatus('');
+      try { D._v=DATA_VERSION; localStorage.setItem(STORE, JSON.stringify(serializeD())); } catch(e) {}
+    } else if (rows && rows.error) {
+      console.warn('Supabase load error:', rows);
+      blockSaving('Could not open the workbook.',
+        'The database refused the request: ' + (rows.message || rows.error) + '.');
     } else {
+      // Authenticated fine, but the row came back empty — almost always the
+      // table's row-level security policy not granting this account access.
       console.warn('Supabase returned no rows — RLS may be blocking read. Token used:', authToken() ? 'session token' : 'anon key');
+      blockSaving('This account cannot see the workbook.',
+        'You are signed in, but the database returned no data for this account. That usually means your user has not been granted access to this workbook.');
     }
-    setSyncStatus('');
     bootApp(); // seeds run inside bootApp after data is applied
   }).catch(function(e) {
     console.warn('Supabase load failed, using local data:', e);
-    setSyncStatus('error');
+    blockSaving('Could not reach the workbook.',
+      'The connection to the database failed (' + (e && e.message ? e.message : 'network error') + ').');
     bootApp();
   });
 }
@@ -868,6 +975,153 @@ function qq(s) { return "'" + String(s).replace(/'/g,"\\'") + "'"; }
 
 function currentQ() {
   var n=new Date(); return 'Q'+Math.ceil((n.getMonth()+1)/3)+' '+n.getFullYear();
+}
+
+// ── Quarters ───────────────────────────────────────────────────────────────
+// Sorts "Q3 2026" style names chronologically; unrecognised names go last.
+function compareQuarterNames(a, b) {
+  function key(s){ var m=/^Q([1-4])\s+(\d{4})$/.exec(String(s).trim()); return m ? (parseInt(m[2],10)*10 + parseInt(m[1],10)) : null; }
+  var ka=key(a), kb=key(b);
+  if (ka !== null && kb !== null) return ka - kb;
+  if (ka !== null) return -1;
+  if (kb !== null) return 1;
+  return String(a).localeCompare(String(b));
+}
+
+function quarterNames() {
+  if (!D.quarters) D.quarters = {};
+  return Object.keys(D.quarters).sort(compareQuarterNames);
+}
+
+// Weekly column labels ("09.30", "10.07", …) counted forward from week 1
+function buildWeekDates(startISO, count) {
+  var d = new Date(String(startISO) + 'T00:00:00');
+  if (isNaN(d.getTime())) return LEGACY_WEEK_DATES.slice();
+  var out = [];
+  for (var i = 0; i < count; i++) {
+    out.push(String(d.getMonth()+1).padStart(2,'0') + '.' + String(d.getDate()).padStart(2,'0'));
+    d.setDate(d.getDate() + 7);
+  }
+  return out;
+}
+
+// North Star metric definitions carry into a new quarter; weekly values do not.
+function carryOverNS(sourceNS, weekCount) {
+  return (sourceNS || DEFAULT_NS).map(function(m){
+    return {
+      type:   m.type,
+      metric: m.metric,
+      owner:  m.owner,
+      target: m.target,
+      status: 'On Track',
+      weeks:  Array(weekCount).fill('')
+    };
+  });
+}
+
+function makeQuarter(startISO, sourceNS) {
+  var weeks = buildWeekDates(startISO, WEEKS_PER_QUARTER);
+  return {
+    startDate: startISO || '',
+    weekDates: weeks,
+    ns:        carryOverNS(sourceNS, weeks.length),
+    rocks:     [],
+    better:    [],
+    blockers:  [],
+    support:   []
+  };
+}
+
+// The active quarter record, creating a safe default if none is set
+function Q() {
+  if (!D.quarters) D.quarters = {};
+  if (!D.activeQuarter || !D.quarters[D.activeQuarter]) {
+    var names = quarterNames();
+    if (names.length) {
+      D.activeQuarter = names[names.length - 1];
+    } else {
+      D.activeQuarter = currentQ();
+      D.quarters[D.activeQuarter] = makeQuarter('', DEFAULT_NS);
+    }
+  }
+  return D.quarters[D.activeQuarter];
+}
+
+// Pad milestone / KPI week arrays out to this quarter's own week count.
+// Only ever grows them, so recorded values are never truncated.
+function padQuarter(q) {
+  var n = (q.weekDates || LEGACY_WEEK_DATES).length;
+  (q.rocks || []).forEach(function(r){
+    (r.subrocks || []).forEach(function(sub){
+      if(!sub.milestones) sub.milestones=[];
+      while(sub.milestones.length < n) sub.milestones.push('');
+      if(!sub.msNotes) sub.msNotes=[];
+      while(sub.msNotes.length < n) sub.msNotes.push('');
+      if(!sub.kpis) sub.kpis=[];
+      sub.kpis.forEach(function(kpi){
+        if(!kpi.weeks) kpi.weeks=[];
+        while(kpi.weeks.length < n) kpi.weeks.push('');
+      });
+    });
+  });
+  (q.ns || []).forEach(function(m){
+    if(!m.weeks) m.weeks=[];
+    while(m.weeks.length < n) m.weeks.push('');
+  });
+}
+
+// Point the app at the active quarter. Called after loading and on every switch.
+function bindQuarter() {
+  var q = Q();
+  if (!q.weekDates || !q.weekDates.length) {
+    q.weekDates = q.startDate ? buildWeekDates(q.startDate, WEEKS_PER_QUARTER) : LEGACY_WEEK_DATES.slice();
+  }
+  if (!q.ns)       q.ns = [];
+  if (!q.rocks)    q.rocks = [];
+  if (!q.better)   q.better = [];
+  if (!q.blockers) q.blockers = [];
+  if (!q.support)  q.support = [];
+
+  WEEK_DATES = q.weekDates;   // every existing reader follows this
+  D.ns       = q.ns;          // same array objects, not copies
+  D.rocks    = q.rocks;
+  D.better   = q.better;
+  D.blockers = q.blockers;
+  D.support  = q.support;
+  D.quarter  = D.activeQuarter;
+
+  padQuarter(q);
+}
+
+// Everything that has to be redrawn when the quarter changes
+function renderAllPanels() {
+  renderQuarterSelect();
+  if (typeof renderNS === 'function')          renderNS();
+  if (typeof renderAllRocks === 'function')    renderAllRocks();
+  if (typeof renderDashInd === 'function')     renderDashInd();
+  if (typeof renderDashPortco === 'function')  renderDashPortco();
+  if (typeof renderBetter === 'function')      renderBetter();
+  if (typeof renderBlockers === 'function')    renderBlockers();
+  if (typeof renderSupport === 'function')     renderSupport();
+}
+
+function switchQuarter(name) {
+  if (!D.quarters || !D.quarters[name]) return;
+  D.activeQuarter = name;
+  bindQuarter();
+  save();
+  renderAllPanels();
+}
+
+function renameQuarter(oldName, newName) {
+  newName = String(newName || '').trim();
+  if (!newName || !D.quarters || !D.quarters[oldName]) return false;
+  if (newName === oldName) return true;
+  if (D.quarters[newName]) return false; // refuse to merge into an existing quarter
+  D.quarters[newName] = D.quarters[oldName];
+  delete D.quarters[oldName];
+  if (D.activeQuarter === oldName) D.activeQuarter = newName;
+  return true;
 }
 
 function statusPill(s) {
@@ -2152,7 +2406,11 @@ function renderAllRocks() {
   el.innerHTML = '';
 
   if (!rocks.length) {
-    el.innerHTML = '<div class="empty" style="padding:32px">No rocks yet — click "+ Add Rock" to get started</div>';
+    // Don't invite someone to start typing rocks when the reason the list is
+    // empty is that their workbook never loaded.
+    el.innerHTML = _loadOk
+      ? '<div class="empty" style="padding:32px">No rocks yet — click "+ Add Rock" to get started</div>'
+      : '<div class="empty" style="padding:32px">The workbook could not be loaded for this account — see the message above. This is not an empty quarter.</div>';
     return;
   }
 
@@ -2812,16 +3070,108 @@ function addSupport(){
   save(); renderSupport();
 }
 
+// ── Quarter switcher UI ────────────────────────────────────────────────────
+var NEW_QUARTER_VALUE = '__new_quarter__';
+
+function renderQuarterSelect() {
+  var sel = document.getElementById('sb-quarter');
+  if (!sel) return;
+  var names = quarterNames();
+  var html = names.map(function(n){
+    return '<option value="'+esc(n)+'"'+(n===D.activeQuarter?' selected':'')+'>'+esc(n)+'</option>';
+  }).join('');
+  html += '<option value="'+NEW_QUARTER_VALUE+'">+ New quarter…</option>';
+  sel.innerHTML = html;
+  sel.value = D.activeQuarter;
+}
+
+function onQuarterSelect(value) {
+  if (value === NEW_QUARTER_VALUE) {
+    renderQuarterSelect();   // put the dropdown back on the real quarter
+    openQuarterModal();
+    return;
+  }
+  switchQuarter(value);
+}
+
+// Guesses the quarter after the latest one, e.g. "Q3 2026" -> "Q4 2026"
+function nextQuarterName() {
+  var names = quarterNames();
+  var last = names.length ? names[names.length-1] : D.activeQuarter;
+  var m = /^Q([1-4])\s+(\d{4})$/.exec(String(last||'').trim());
+  if (!m) return '';
+  var qn = parseInt(m[1],10), yr = parseInt(m[2],10);
+  if (qn === 4) { qn = 1; yr++; } else { qn++; }
+  return 'Q'+qn+' '+yr;
+}
+
+// Suggests the day after the latest quarter's calendar ends
+function nextQuarterStart() {
+  var names = quarterNames();
+  if (!names.length) return '';
+  var last = D.quarters[names[names.length-1]];
+  if (!last) return '';
+  var weeks = last.weekDates || [];
+  if (last.startDate) {
+    var d = new Date(last.startDate + 'T00:00:00');
+    if (!isNaN(d.getTime())) {
+      d.setDate(d.getDate() + 7 * (weeks.length || WEEKS_PER_QUARTER));
+      return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+    }
+  }
+  return '';
+}
+
+function openQuarterModal() {
+  document.getElementById('q-err').textContent = '';
+  document.getElementById('q-name').value  = nextQuarterName();
+  document.getElementById('q-start').value = nextQuarterStart();
+  document.getElementById('quarter-modal').classList.add('open');
+  setTimeout(function(){ var el=document.getElementById('q-name'); if(el) el.focus(); }, 50);
+}
+
+function closeQuarterModal() {
+  document.getElementById('quarter-modal').classList.remove('open');
+}
+
+function createQuarter() {
+  var name  = (document.getElementById('q-name').value  || '').trim();
+  var start = (document.getElementById('q-start').value || '').trim();
+  var err   = document.getElementById('q-err');
+
+  if (!name)  { err.textContent = 'Give the quarter a name, e.g. "Q4 2026".'; return; }
+  if (D.quarters && D.quarters[name]) { err.textContent = '"'+name+'" already exists — pick it from the dropdown instead.'; return; }
+  if (!start) { err.textContent = 'Pick the start date of week 1.'; return; }
+  var test = new Date(start + 'T00:00:00');
+  if (isNaN(test.getTime())) { err.textContent = 'That start date is not valid.'; return; }
+
+  // Carry the CURRENT quarter's metric definitions over; nothing else is copied,
+  // and no existing quarter is touched.
+  var q = makeQuarter(start, (Q().ns && Q().ns.length) ? Q().ns : DEFAULT_NS);
+  D.quarters[name] = q;
+  D.activeQuarter  = name;
+
+  bindQuarter();
+  err.textContent = '';
+  closeQuarterModal();
+  save();
+  renderAllPanels();
+}
+
 // ── Settings ───────────────────────────────────────────────────────────────
-function openModal(){ document.getElementById('set-q').value=D.quarter; document.getElementById('modal').classList.add('open'); }
+function openModal(){ document.getElementById('set-q').value=D.activeQuarter; document.getElementById('modal').classList.add('open'); }
 function closeModal(){ document.getElementById('modal').classList.remove('open'); }
-function saveSettings(){ D.quarter=document.getElementById('set-q').value.trim()||D.quarter; document.getElementById('sb-quarter').textContent=D.quarter; save(); closeModal(); }
+function saveSettings(){
+  // Renames the active quarter (keeping all its data) rather than overwriting a name
+  var wanted=document.getElementById('set-q').value.trim();
+  if(wanted && wanted!==D.activeQuarter) renameQuarter(D.activeQuarter, wanted);
+  bindQuarter(); save(); renderAllPanels(); closeModal();
+}
 
 // ── Boot ───────────────────────────────────────────────────────────────────
 function bootApp() {
-  if(!D.quarter) D.quarter=currentQ();
-  if(!D.quarter || D.quarter === 'Q2 2026') D.quarter = 'Q3 2026';
-  document.getElementById('sb-quarter').textContent = D.quarter;
+  bindQuarter();          // establishes the active quarter and its calendar
+  renderQuarterSelect();
   // Initialize topbar for allrocks
   var act = document.getElementById('topbar-act');
   if (act) {
@@ -2843,6 +3193,8 @@ function bootApp() {
 document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('modal').addEventListener('click',function(e){if(e.target===this) closeModal();});
   document.getElementById('confirm-modal').addEventListener('click',function(e){if(e.target===this) confirmCancel();});
+  document.getElementById('quarter-modal').addEventListener('click',function(e){if(e.target===this) closeQuarterModal();});
+  document.getElementById('q-name').addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault(); document.getElementById('q-start').focus(); } });
   authInit();
 });
 
